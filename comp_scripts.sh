@@ -65,7 +65,7 @@ change_screenshots_location() {
 }
 
 customize_shell() {
-    cp ./.bash_profile_addons ~/.bash_profile_addons
+    ln -s ./.bash_profile_addons ~/.bash_profile_addons
     echo ". ~/.bash_profile_addons" >> ~/.bash_profile
 }
 
