@@ -27,6 +27,22 @@ git config --global alias.rl "reflog"
 alias ga="git config --get-regexp alias"
 alias gb="git rev-parse --abbrev-ref HEAD"
 
+grbh() {
+    # This function adds a pre-rebase hook to 
+    # the current repo
+    if test -d ".git"; 
+    then
+        echo '''
+            date=$(date '+%a-%b-%d_at_%H-%M')
+            branch=$(git symbolic-ref --short -q HEAD)
+            tag="${branch}_onto_${1}__${date}_auto_generated"
+            git tag $tag
+        ''' > .git/hooks/pre-rebase
+    else
+        echo "No .git file found..."
+    fi
+}
+
 ####################### Terminal ########################
 #########################################################
 

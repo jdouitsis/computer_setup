@@ -82,7 +82,7 @@ change_screenshots_location() {
 }
 
 setup_ssh_keys() {
-    cp -r ./.ssh/ ~/.ssh/
+    cp -r ./ssh/ ~/.ssh/
 }
 
 customize_shell() {
