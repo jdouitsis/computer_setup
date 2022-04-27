@@ -21,11 +21,20 @@ install_applications() {
     echo "Installing Turbo Boost Switcher"
     brew install --cask turbo-boost-switcher
 
-    echo "Installing docker"
+    echo "Installing docker..."
     brew install --cask docker
 
-    echo "Installing whatsapp"
+    echo "Installing whatsapp..."
     brew install --cask whatsapp
+
+    echo "Installing dbeaver..."
+    brew install --cask dbeaver-community
+
+    echo "Installing alembic..."
+    brew install alembic
+
+    echo "Installing Postgress SQL..."
+    brew install postgresql
 }
 
 install_terminal_stuff () {
@@ -45,6 +54,9 @@ install_terminal_stuff () {
     echo "Installing python 3.9.2"
     pyenv install 3.9.2
 
+    echo "Installing watch..."
+    brew install watch
+
 }
 
 change_screenshots_location() {
@@ -57,9 +69,13 @@ customize_shell() {
     echo ". ~/.bash_profile_addons" >> ~/.bash_profile
 }
 
+show_git_aliases() {
+    cat ~/.gitconfig
+}
 echo '''Available functions: 
 - install_terminal_stuff()
 - customize_shell()
 - change_screenshots_location()
 - install_applications()
+- show_git_aliases()
 '''
