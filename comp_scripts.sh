@@ -11,9 +11,20 @@ clear
 # - Pull in all the extensions and stuff
 # Make a simlink file for the settings file so it will live in this folder
 
+install_brew() {
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+}
+
 install_applications() {
     echo "Installing vscode..."
     brew install --cask visual-studio-code
+
+    echo "Installing vscode extensions..."
+    xargs < vscode/extensions.list -n 1 code --install-extension
+
+    echo "Installing vscode Settings..."
+    rm ~/Library/Application\ Support/Code/User/settings.json; 
+    cp ./vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
     
     echo "Installing chrome..."
     brew install --cask google-chrome
@@ -30,17 +41,17 @@ install_applications() {
     echo "Installing dbeaver..."
     brew install --cask dbeaver-community
 
-    echo "Installing alembic..."
-    brew install alembic
+    echo "Installing Rectangle..."
+    brew install --cask rectangle
 
-    echo "Installing Postgress SQL..."
-    brew install postgresql
+    echo "Installing teamviewer..." 
+    brew install --cask teamviewer
+
+    echo "Installing AWS VPN Client..."
+    brew install --cask aws-vpn-client
 }
 
 install_terminal_stuff () {
-    echo "Installing brew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
     echo "Installing node 16..."
     brew install node@16
     brew link --overwrite node@16
@@ -57,25 +68,55 @@ install_terminal_stuff () {
     echo "Installing watch..."
     brew install watch
 
+    echo "Installing alembic..."
+    brew install alembic
+
+    echo "Installing Postgress SQL..."
+    brew install postgresql
 }
+
 
 change_screenshots_location() {
     mkdir ~/Pictures/Screenshots
     defaults write com.apple.screencapture location ~/Pictures/Screenshots
 }
 
+setup_ssh_keys() {
+    cp -r ./.ssh/ ~/.ssh/
+}
+
 customize_shell() {
-    ln -s ./.bash_profile_addons ~/.bash_profile_addons
+    cp ./.bash_profile_addons ~/.bash_profile_addons
+    sed -i '' '/bash_profile_addons/d' ~/.bash_profile
+    echo "" >> ~/.bash_profile
     echo ". ~/.bash_profile_addons" >> ~/.bash_profile
+    clear
+    . ~/.bash_profile
 }
 
 show_git_aliases() {
     cat ~/.gitconfig
 }
-echo '''Available functions: 
-- install_terminal_stuff()
-- customize_shell()
-- change_screenshots_location()
-- install_applications()
-- show_git_aliases()
+
+backup_vscode() {
+    pushd vscode
+        code --list-extensions > extensions.list
+        rm settings.json
+        cp ~/Library/Application\ Support/Code/User/settings.json settings.json
+    popd
+}
+
+echo '''You need to install brew first by running: 
+    install_brew
+
+Then you can run:
+    install_terminal_stuff
+    install_applications
+
+Then other things you can do are:
+    customize_shell
+    change_screenshots_location
+    show_git_aliases
+    setup_ssh_keys
+    backup_vscode
 '''

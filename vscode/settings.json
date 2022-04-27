@@ -1,0 +1,95 @@
+{
+  "workbench.startupEditor": "newUntitledFile",
+  "explorer.confirmDragAndDrop": false,
+  "headwind.runOnSave": true,
+  "headwind.classRegex": {
+    "html": "\\bclass\\s*=\\s*[\\\"\\']([_a-zA-Z0-9\\s\\-\\:\\/]+)[\\\"\\']",
+    "css": "\\B@apply\\s+([_a-zA-Z0-9\\s\\-\\:\\/]+);",
+    "javascript": "(?:\\bclassName\\s*=\\s*[\\\"\\']([_a-zA-Z0-9\\s\\-\\:\\/]+)[\\\"\\'])|(?:\\btw\\s*`([_a-zA-Z0-9\\s\\-\\:\\/]*)`)",
+    "javascriptreact": "(?:\\bclassName\\s*=\\s*[\\\"\\']([_a-zA-Z0-9\\s\\-\\:\\/]+)[\\\"\\'])|(?:\\btw\\s*`([_a-zA-Z0-9\\s\\-\\:\\/]*)`)",
+    "typescript": "(?:\\bclassName\\s*=\\s*[\\\"\\']([_a-zA-Z0-9\\s\\-\\:\\/]+)[\\\"\\'])|(?:\\btw\\s*`([_a-zA-Z0-9\\s\\-\\:\\/]*)`)",
+    "typescriptreact": "(?:\\bclassName\\s*=\\s*[\\\"\\']([_a-zA-Z0-9\\s\\-\\:\\/]+)[\\\"\\'])|(?:\\btw\\s*`([_a-zA-Z0-9\\s\\-\\:\\/]*)`)"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[javascript]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.tabSize": 2
+  },
+  "[json]": {
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "ms-python.python",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  "diffEditor.ignoreTrimWhitespace": false,
+  "eslint.codeAction.showDocumentation": {
+    "enable": true
+  },
+  "aws.profile": "profile:default",
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  // Personal setup
+  "eslint.run": "onSave",
+  "eslint.format.enable": true,
+  "eslint.runtime": "",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.formatOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  "files.autoSave": "onFocusChange",
+  "window.autoDetectColorScheme": true,
+  "terminal.integrated.tabs.enabled": true,
+  "editor.formatOnPaste": true,
+  "editor.detectIndentation": false,
+  "editor.tabCompletion": "on",
+  "editor.stickyTabStops": true,
+  "tabnine.experimentalAutoImports": true,
+  "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImxhbmd1YWdlXCI6XCJcIixcImN1c3RvbUZvbnRzXCI6W10sXCJsaWJyYXJpZXNcIjpcImdlbmVyYWxcIixcImN1c3RvbUxpYnJhcmllc1wiOltcIkwuc2NyYXRjaHBhZFwiXSxcInBsdWdpbnNcIjpbXSxcInJlY2VudENvbG9yc1wiOltdLFwiZm9ybWF0V2lkdGhcIjoyNDAsXCJjcmVhdGVUYXJnZXRcIjpmYWxzZSxcInBhZ2VGb3JtYXRcIjp7XCJ4XCI6MCxcInlcIjowLFwid2lkdGhcIjo4NTAsXCJoZWlnaHRcIjoxMTAwfSxcInNlYXJjaFwiOnRydWUsXCJzaG93U3RhcnRTY3JlZW5cIjp0cnVlLFwiZ3JpZENvbG9yXCI6XCIjZDBkMGQwXCIsXCJkYXJrR3JpZENvbG9yXCI6XCIjNmU2ZTZlXCIsXCJhdXRvc2F2ZVwiOnRydWUsXCJyZXNpemVJbWFnZXNcIjpudWxsLFwib3BlbkNvdW50ZXJcIjowLFwidmVyc2lvblwiOjE4LFwidW5pdFwiOjEsXCJpc1J1bGVyT25cIjpmYWxzZSxcInVpXCI6XCJcIn0ifQ==",
+  "cSpell.userWords": [
+    "autogenerate",
+    "bcrypt",
+    "boto",
+    "chdir",
+    "Cmds",
+    "connexion",
+    "Firestore",
+    "instabot",
+    "rprater",
+    "setenv",
+    "venv",
+    "VPOPS",
+    "Wireframe"
+  ],
+  "security.workspace.trust.untrustedFiles": "open",
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "editor.minimap.enabled": false,
+  "python.formatting.provider": "black",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "json.format.enable": true,
+  "json.schemas": [],
+  "tailwindCSS.includeLanguages": { "plaintext": "javascript" },
+  "tailwindCSS.experimental.classRegex": [
+    "tw`([^`]*)",
+    ["classnames\\(([^)]*)\\)", "'([^']*)'"]
+  ],
+  "files.associations": {
+    "*.py": "python"
+  },
+  "workbench.editor.untitled.hint": "hidden"
+}
