@@ -109,8 +109,7 @@ backup() {
     echo "Backing up vscode..."
     pushd vscode
         code --list-extensions > extensions.list
-        rm settings.json
-        cp ~/Library/Application\ Support/Code/User/settings.json settings.json
+        cat ~/Library/Application\ Support/Code/User/settings.json > settings.json
     popd
 }
 
