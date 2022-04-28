@@ -98,7 +98,15 @@ show_git_aliases() {
     cat ~/.gitconfig
 }
 
-backup_vscode() {
+backup() {
+    echo "Backing up ssh..."
+    pushd ssh
+        cat ~/.ssh/config > config
+        cat ~/.ssh/id_rsa > id_rsa
+        cat ~/.ssh/id_rsa.pub > id_rsa.pub
+    popd
+
+    echo "Backing up vscode..."
     pushd vscode
         code --list-extensions > extensions.list
         rm settings.json
@@ -118,5 +126,5 @@ Then other things you can do are:
     change_screenshots_location
     show_git_aliases
     setup_ssh_keys
-    backup_vscode
+    backup
 '''
