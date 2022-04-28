@@ -1,5 +1,13 @@
 clear
 
+# bash shell output color: https://stackoverflow.com/a/5947802/11717554
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
+echo_red() {
+    echo -e "${RED}$1${NC}"
+}
+
 
 # - Save ssh keys 
 # - Have option to be able to run comp_script.sh from the network 
@@ -13,9 +21,25 @@ clear
 
 install_brew() {
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    
+    echo "" >> ~/.bash_profile
+    echo "export JD_BREW_INSTALLED=true" >> ~/.bash_profile
 }
 
 install_applications() {
+
+    if [ ! -z $JD_BREW_INSTALLED ];
+    then 
+        echo_red "You need to install brew before installing the applications"
+        return
+    fi 
+
+    if [ -z $JD_APPLICATIONS_ALREADY_INSTALLED ];
+    then
+        echo_red "Applications have already been installed"
+        return
+    fi
+
     echo "Installing vscode..."
     brew install --cask visual-studio-code
 
@@ -49,9 +73,19 @@ install_applications() {
 
     echo "Installing AWS VPN Client..."
     brew install --cask aws-vpn-client
+
+    echo "" >> ~/.bash_profile
+    echo "export JD_APPLICATIONS_ALREADY_INSTALLED=true" >> ~/.bash_profile
 }
 
 install_terminal_stuff () {
+
+    if [ -z $JD_TERMINAL_APPS_ALREADY_INSTALLED ];
+    then
+        echo_red "Terminal apps already installed have already been installed"
+        return
+    fi
+
     echo "Installing node 16..."
     brew install node@16
     brew link --overwrite node@16
@@ -73,6 +107,9 @@ install_terminal_stuff () {
 
     echo "Installing Postgress SQL..."
     brew install postgresql
+
+    echo "" >> ~/.bash_profile
+    echo "export JD_TERMINAL_APPS_ALREADY_INSTALLED=true" >> ~/.bash_profile
 }
 
 
