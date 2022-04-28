@@ -27,11 +27,12 @@ git config --global alias.rl "reflog"
 alias ga="git config --get-regexp alias"
 alias gb="git rev-parse --abbrev-ref HEAD"
 
-grbh() {
+gpr() {
     # This function adds a pre-rebase hook to 
     # the current repo
     if test -d ".git"; 
     then
+        echo "The pre-rebase script has been added to the repo!"
         echo '''
             date=$(date '+%a-%b-%d_at_%H-%M')
             branch=$(git symbolic-ref --short -q HEAD)
