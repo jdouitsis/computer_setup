@@ -1,5 +1,7 @@
 #################    General Aliases    ################# 
 #########################################################
+# This will create some basic but usefull aliases for 
+# general use
 
 alias r=". ~/.bash_profile"
 alias gh="cd ~/Github"
@@ -11,6 +13,7 @@ alias la="l -a"
 #######################    Git    ####################### 
 #########################################################
 
+# Here are all of the custom git commands
 git config --global alias.uc "reset HEAD~"
 git config --global alias.c "commit"
 git config --global alias.cm "commit -m"
@@ -24,9 +27,12 @@ git config --global alias.ch "checkout"
 git config --global alias.a "add . -A"
 git config --global alias.rl "reflog"
 
+# Shows all of the current aliases
 alias ga="git config --get-regexp alias"
+# prints the current branch
 alias gb="git rev-parse --abbrev-ref HEAD"
 
+# Adds the pre-rebase script to the given repo
 gpr() {
     # This function adds a pre-rebase hook to 
     # the current repo
@@ -51,6 +57,7 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 ######################## Docker #########################
 #########################################################
 
+# Setups shortcuts for docker
 alias d="docker"
 alias dc="docker-compose"
 
@@ -75,6 +82,7 @@ dck() {
     echo "Stoping container... $(docker container stop $container)"
     echo "Removing container... $(docker container rm $container)"    
 }
+
 dcu() {
     echo "Docker Compose Up [service] [-d]"
     dc up -d $1
