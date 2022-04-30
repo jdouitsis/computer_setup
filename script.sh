@@ -8,6 +8,11 @@ echo_red() {
     echo -e "${RED}$1${NC}"
 }
 
+echo_to_profile() {
+    BASH_PROFILE=~/.bash_profile
+    [ ! -z $(tail -c 1 $BASH_PROFILE) ] && echo "" >> $BASH_PROFILE
+    echo $1 >> $BASH_PROFILE
+}
 
 # - Save ssh keys 
 # - Have option to be able to run comp_script.sh from the network 
@@ -21,9 +26,7 @@ echo_red() {
 
 install_brew() {
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    
-    echo "" >> ~/.bash_profile
-    echo "export JD_BREW_INSTALLED=true" >> ~/.bash_profile
+    echo_to_profile "export JD_BREW_INSTALLED=true"
 }
 
 install_applications() {
@@ -74,8 +77,7 @@ install_applications() {
     echo "Installing AWS VPN Client..."
     brew install --cask aws-vpn-client
 
-    echo "" >> ~/.bash_profile
-    echo "export JD_APPLICATIONS_ALREADY_INSTALLED=true" >> ~/.bash_profile
+    echo_to_profile "export JD_APPLICATIONS_ALREADY_INSTALLED=true"
 }
 
 install_terminal_stuff () {
@@ -108,8 +110,7 @@ install_terminal_stuff () {
     echo "Installing Postgress SQL..."
     brew install postgresql
 
-    echo "" >> ~/.bash_profile
-    echo "export JD_TERMINAL_APPS_ALREADY_INSTALLED=true" >> ~/.bash_profile
+    echo_to_profile "export JD_TERMINAL_APPS_ALREADY_INSTALLED=true"
 }
 
 
@@ -125,8 +126,7 @@ setup_ssh_keys() {
 customize_shell() {
     cp ./.bash_profile_addons ~/.bash_profile_addons
     sed -i '' '/bash_profile_addons/d' ~/.bash_profile
-    echo "" >> ~/.bash_profile
-    echo ". ~/.bash_profile_addons" >> ~/.bash_profile
+    echo_to_profile ". ~/.bash_profile_addons"
     clear
     . ~/.bash_profile
 }
@@ -150,17 +150,17 @@ backup() {
     popd
 }
 
-echo '''You need to install brew first by running: 
-    install_brew
+# echo '''You need to install brew first by running: 
+#     install_brew
 
-Then you can run:
-    install_terminal_stuff
-    install_applications
+# Then you can run:
+#     install_terminal_stuff
+#     install_applications
 
-Then other things you can do are:
-    customize_shell
-    change_screenshots_location
-    show_git_aliases
-    setup_ssh_keys
-    backup
-'''
+# Then other things you can do are:
+#     customize_shell
+#     change_screenshots_location
+#     show_git_aliases
+#     setup_ssh_keys
+#     backup
+# '''
