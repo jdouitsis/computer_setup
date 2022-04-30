@@ -1,5 +1,0 @@
-
-date=$(date '+%a-%b-%d_at_%H-%M')
-branch=$(git symbolic-ref --short -q HEAD)
-tag="${branch}_onto_${1}__${date}_auto_generated"
-git tag $tag

@@ -1,0 +1,34 @@
+#!/bin/sh
+# 
+# The "pre-rebase" hook is run just before "git rebase" starts doing
+# its job, and can prevent the command from running by exiting with
+# non-zero status.
+#
+# The hook is called with the following parameters:
+#
+# $1 -- the upstream the series was forked from.
+# $2 -- the branch being rebased (or empty when rebasing the current branch).
+#
+# This script will add a tag to the current branch before the rebase
+# with the format of:
+#       <current-branch>_onto_<branch-rebased-onto>__${date}_auto_generated
+# 
+# An example would be if you have this sconario
+# 
+# A -> B -> C -> master 
+#       \
+#         D -> E -> F -> feature
+# 
+# and you rebase the feature branch onto master, you would end up 
+# with something like this:
+# 
+# A -> B -> C -> master -> D -> E -> F -> feature
+#       \
+#         D -> E -> F -> feature_onto_master_auto_generated
+# 
+
+date=$(date +%a-%b-%d_at_%H-%M)
+branch=$(git symbolic-ref --short -q HEAD)
+tag="${branch}_onto_${1}__${date}_auto_generated"
+git tag $tag
+        

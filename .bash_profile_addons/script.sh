@@ -32,13 +32,7 @@ gpr() {
     # the current repo
     if test -d ".git"; 
     then
-        echo "The pre-rebase script has been added to the repo!"
-        echo '''
-            date=$(date '+%a-%b-%d_at_%H-%M')
-            branch=$(git symbolic-ref --short -q HEAD)
-            tag="${branch}_onto_${1}__${date}_auto_generated"
-            git tag $tag
-        ''' > .git/hooks/pre-rebase
+        cat ~/.bash_profile_addons/git/hooks/pre-rebase > .git/hooks/pre-rebase
     else
         echo "No .git file found..."
     fi
