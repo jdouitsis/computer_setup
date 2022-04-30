@@ -1,28 +1,78 @@
-# Computer Initialization Script
+# MacBook Initialization Script
 
 ## About
 
 The purpose of this script is to take a blank MacBook pro from it's store bought state and install all of the required programs.
 
-## User Stories
+## Setting up the laptop
 
-### Setting up the laptop
+A user will take this script and run it once and then it will setup the computer perfectly for all of the tasks. The tasks that will be executed are as follows
 
-A user will take this script and run it once and then it will setup the computer perfectly for all of the tasks. This includes setting up the `brew` package manager and then using `brew` to install all of the used GUI applications (VSCode, Chrome, WhatsApp, etc) and terminal softwares (`xcode`, `python`, `alembic`, etc).
+### Git
 
-### Setting up additional terminal functionality
+Git information will be required and stored globally such as
 
-Along with Installing all of the proper softwares, this script will also configure the terminal itself and add additional functionality
+- `user.name`
+- `user.email`
 
-- terminal prompt
-- `git`
-  - Add aliases
-  - Setup credentials
-    - name
-    - email
-  - Hooks
-    - pre-rebase
+### Brew
 
-It will also setup specific functions tied to their bash profile that will execute certain tasks for them. Such tasks include adding a `pre-rebase` script to git repos
+`brew` will be installed to allow all other applications to be installed
+
+### Applications
+
+The following GUI's will be installed
+
+- Visual Studio Code
+- Google Chrome
+- Turbo Boost Switcher
+- Docker
+- WhatsApp
+- DBeaver Community
+- Rectangle
+- TeamViewer
+- AWS VPN Client
+
+### Terminal Stuff
+
+The following terminal softwares will be installed
+
+- Node v16
+- pyEnv
+- Watch
+- Alembic
+- Postgresql
+- Python 3.9.2
+- Xcode Select
+
+### Update screenshot location
+
+The new screenshot location will be in `~/Pictures/Screenshots`
+
+### SSH config
+
+Takes everything in [`ssh`](ssh) and copies it to the `~/.ssh` directory.
+
+It is currently left empty so that you can put your own `id_rsa`, `id_rsa.pub`, `config`, etc in to be added
+
+### Customize shell
+
+The [`.bash_profile_addons/script.sh`](.bash_profile_addons/script.sh) is added to the `~/.bash_profile` and runs every time the terminal opens. This script customizes the look of the terminal prompt as well as adds the ability to add add `git hooks` to `git repos` and adds a variety of other commands that can be used.
 
 ## Execution
+
+In order to run the script, all you need to do is enter the following in the root of this repository:
+
+```sh
+. init.sh
+```
+
+## Backup
+
+If you run the `backup.sh` script by executing the below code:
+
+```sh
+. backup.sh
+```
+
+Then it will copy all of the files from `~/.ssh` into the `./ssh` file as well as the vscode user settings and extensions.

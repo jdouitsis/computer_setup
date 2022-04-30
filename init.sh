@@ -112,6 +112,13 @@ install_applications() {
 
 
 setup_git() {
+    if [ ! -z $JD_GIT_SETUP ];
+    then
+        echo_present "Git has already been setup"
+        return
+    fi
+
+
     echo -e "${YELLOW}Setting up git$NC"
 
     echo -n '' "Git full name: "
@@ -122,6 +129,8 @@ setup_git() {
 
     git config --global user.name $git_name
     git config --global user.email $git_email
+    
+    echo_to_profile "export JD_GIT_SETUP=true"
 }
 
 install_terminal_stuff () {
