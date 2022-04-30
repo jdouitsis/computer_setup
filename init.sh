@@ -43,13 +43,13 @@ echo_to_profile() {
 
 brew_cast_install() {
     echo_installing $1
-    # brew install --cask $1 > /dev/null 2>&1
+    brew install --cask $1 > /dev/null 2>&1
     echo "✅"
 }
 
 brew_install() {
     echo_installing $1
-    # brew install $1 > /dev/null 2>&1
+    brew install $1 > /dev/null 2>&1
     echo "✅"
 }
 
@@ -59,7 +59,7 @@ install_brew() {
         echo_present "Brew is already installed!"
         return
     fi 
-    # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     echo_to_profile "export JD_BREW_INSTALLED=true"
     echo_added "Brew has been installed!"
     sleep 1
@@ -83,12 +83,12 @@ install_applications() {
     brew_cast_install visual-studio-code
 
     echo_installing "vscode extensions"
-    # xargs < vscode/extensions.list -n 1 code --install-extension > /dev/null 2>&1
+    xargs < vscode/extensions.list -n 1 code --install-extension > /dev/null 2>&1
     echo "✅"
 
     echo_installing "vscode Settings"
-    # rm ~/Library/Application\ Support/Code/User/settings.json; 
-    # cp ./vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+    rm ~/Library/Application\ Support/Code/User/settings.json; 
+    cp ./vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
     echo "✅"
     
     brew_cast_install google-chrome
@@ -153,17 +153,17 @@ install_terminal_stuff () {
     brew_install node@16
     
     echo_installing "linking node@16 to node"
-    # brew link --overwrite node@16 > /dev/null 2>&1
+    brew link --overwrite node@16 > /dev/null 2>&1
     echo "✅"
     
     echo_installing "xcode"
-    # xcode-select --install > /dev/null 2>&1
+    xcode-select --install > /dev/null 2>&1
     echo "✅"
     
     brew_install pyenv
 
     echo_installing "python 3.9.2"
-    # pyenv install 3.9.2 > /dev/null 2>&1
+    pyenv install 3.9.2 > /dev/null 2>&1
     echo "✅"
 
     brew_install watch
