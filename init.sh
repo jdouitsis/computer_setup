@@ -23,7 +23,7 @@ echo_added() {
 }
 
 echo_present() {
-    echo -e "${GREEN}-  $1 ${NC}"
+    echo -e "${GREEN}🆗 $1 ${NC}"
 }
 
 echo_yellow() {
@@ -56,7 +56,7 @@ brew_install() {
 install_brew() {
     if [ ! -z $JD_BREW_INSTALLED ];
     then 
-        echo_present "Brew is already installed!"
+        echo_present "Brew is already installed"
         return
     fi 
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
