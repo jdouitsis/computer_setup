@@ -107,6 +107,8 @@ install_applications() {
 
     brew_cast_install aws-vpn-client
 
+    brew_cast_install expressvpn
+
     echo_to_profile "export JD_APPLICATIONS_ALREADY_INSTALLED=true"
 }
 
