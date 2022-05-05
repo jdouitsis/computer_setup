@@ -10,6 +10,11 @@ alias l="ls -G -F"
 alias la="l -a"
 
 
+#######################   pytest  #######################
+#########################################################
+
+alias pt='pytest'
+
 #######################    Git    ####################### 
 #########################################################
 
@@ -26,6 +31,8 @@ git config --global alias.se "!git rev-list --all | xargs git grep -F"
 git config --global alias.ch "checkout"
 git config --global alias.a "add . -A"
 git config --global alias.rl "reflog"
+git config --global alias.pn '!git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)'
+git config --global alias.pf '!git push -f'
 
 # Shows all of the current aliases
 alias ga="git config --get-regexp alias"
