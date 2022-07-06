@@ -110,6 +110,12 @@ install_applications() {
     # brew_cast_install expressvpn
 
     # brew_cast_install krisp
+    
+    # brew_cast_install macs-fan-control
+
+    brew_install postman
+
+    brew_cast_install google-cloud-sdk
 
     brew_cast_installm signal
 
@@ -178,6 +184,9 @@ install_terminal_stuff () {
 
     brew_install postgresql
 
+    brew_install bash-completion
+    brew_install stripe/stripe-cli/stripe
+
     echo_to_profile "export JD_TERMINAL_APPS_ALREADY_INSTALLED=true"
 }
 
@@ -196,6 +205,7 @@ customize_shell() {
     cp -r ./.bash_profile_addons/ ~/.bash_profile_addons/
     sed -i '' '/.bash_profile_addons/d' ~/.bash_profile
     echo_to_profile ". ~/.bash_profile_addons/script.sh"
+    echo_to_profile ". ~/.bash_profile_addons/patagona.sh"
     . ~/.bash_profile
     echo_added "Shell customized!"
 }
