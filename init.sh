@@ -113,7 +113,9 @@ install_applications() {
     
     # brew_cast_install macs-fan-control
 
-    brew_install postman
+    brew_cast_install caffeine
+
+    brew_cast_install postman
 
     brew_cast_install google-cloud-sdk
 

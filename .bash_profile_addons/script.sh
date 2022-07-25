@@ -34,6 +34,15 @@ git config --global alias.rl "reflog"
 git config --global alias.pn '!git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)'
 git config --global alias.pf '!git push -f'
 
+alias gct="git tag -a"
+alias gpt="git push origin --tags"
+alias gdlt="git tag -d" 
+alias gdrt="git push origin --delete"
+
+
+
+
+
 # This kills all of the git branches besides the master (dangerous)
 # alias gclean="git branch | grep -v "master" | xargs git branch -D && git remote prune origin"
 
@@ -107,4 +116,12 @@ dcu() {
     echo "Docker Compose Up [service] [-d]"
     dc up -d $1
     [ "$2" != "-d" ] && dcl $1
+}
+
+dce() {
+    echo "Docker Compose Exec [service] [command=sh]"
+    
+    [ ! -z $2 ] && cmd=$2 || cmd=sh 
+
+    docker exec -it $1 $cmd
 }
