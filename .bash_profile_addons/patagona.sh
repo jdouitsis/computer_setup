@@ -40,3 +40,25 @@ then
         PS1="(T) $PS1"
     fi  
 fi
+
+dsc() { docker container stop $(d container ls -a -q); }
+drmc() { dsc; docker container rm $(d container ls -a -q) ; }
+drmv() { docker volume rm $(d volume ls -q) ; }
+drmi() { docker image rm -f $(d image ls -q) ; }
+alias drma="dsc; drmc; drmv; drmi"
+
+c-ssh-device() {
+    ssh-keygen -f ~/.ssh/known_hosts -R "[localhost]:$1"
+}
+
+ssh-restart-server() {
+    ssh $1 'bash -c #commands to run on remote host
+        docker container stop $(docker container ls -a -q)
+        docker container rm $(docker container ls -a -q)
+
+        cd ~/docker-compose-files
+        export COMPOSE_FILE=docker-compose.yml:docker-compose.prod.yml
+
+        docker-compose down -v
+        docker-compose up -d'
+}

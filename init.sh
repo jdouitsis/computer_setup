@@ -186,6 +186,8 @@ install_terminal_stuff () {
 
     brew_install postgresql
 
+    brew_install neovim
+
     brew_install bash-completion
     brew_install stripe/stripe-cli/stripe
 
@@ -209,6 +211,15 @@ customize_shell() {
     echo_to_profile ". ~/.bash_profile_addons/script.sh"
     echo_to_profile ". ~/.bash_profile_addons/patagona.sh"
     . ~/.bash_profile
+
+    # Tutorial
+    # https://medium.com/@timleland/how-to-enable-autocomplete-in-mac-terminal-f3480678e829
+    echo "set completion-ignore-case on" > ~/.inputrc
+    echo "set show-all-if-ambiguous on TAB: menu-complete" >> ~/.inputrc
+    
+    # Also do this
+    # https://stackoverflow.com/questions/81272/how-to-move-the-cursor-word-by-word-in-the-os-x-terminal
+
     echo_added "Shell customized!"
 }
 

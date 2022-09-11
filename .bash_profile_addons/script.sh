@@ -9,6 +9,16 @@ alias c="clear"
 alias l="ls -G -F"
 alias la="l -a"
 
+alias t="tree"
+alias t1="tree -L 1"
+alias t2="tree -L 2"
+alias t1s="t1 -P "
+alias t2s="t2 -P "
+
+cds() {
+	cd $1
+	tree -L 1
+}
 
 #######################   pytest  #######################
 #########################################################
@@ -105,11 +115,10 @@ alias dcl="docker-compose logs -f "
 alias dcps="watch -n 1 docker-compose ps"
 alias dwc="watch -n 1 docker container ls "
 
+
 dck() {
     echo "Docker Compose Kill [service]"
-    container=$(docker_container_name $1)
-    echo "Stoping container... $(docker container stop $container)"
-    echo "Removing container... $(docker container rm $container)"    
+    docker-compose rm -s -v -f $1
 }
 
 dcu() {
