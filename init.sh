@@ -97,6 +97,10 @@ install_applications() {
 
     brew_cast_install docker
 
+    brew_cast_install microsoft-teams
+
+    brew_cast_install simplemind
+
     brew_cast_install whatsapp
 
     brew_cast_install dbeaver-community
@@ -203,6 +207,7 @@ change_screenshots_location() {
 setup_ssh_keys() {
     cp -r ./ssh/ ~/.ssh/
     echo_added "SSH keys added!"
+    chmod 600 ~/.ssh/id_rsa
 }
 
 customize_shell() {

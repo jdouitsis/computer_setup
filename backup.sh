@@ -1,12 +1,17 @@
 echo "Backing up ssh..."
-pushd ssh
+cd ssh
     cat ~/.ssh/config > config
     cat ~/.ssh/id_rsa > id_rsa
     cat ~/.ssh/id_rsa.pub > id_rsa.pub
-popd
+cd -
 
 echo "Backing up vscode..."
-pushd vscode
+cd vscode
     code --list-extensions > extensions.list
-    cat ~/Library/Application\ Support/Code/User/settings.json > settings.json
-popd
+    cp ~/Library/Application\ Support/Code/User/settings.json settings.json
+cd -
+
+echo "Backing up vim..."
+cd vscode
+    cp -r ~/.vim/ vim/
+cd -
